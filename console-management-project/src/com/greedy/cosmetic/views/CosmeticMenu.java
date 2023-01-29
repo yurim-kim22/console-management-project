@@ -23,9 +23,9 @@ public class CosmeticMenu {
 			
 			switch(no) {
 			case 1: cosmeticController.selectAllCosmetic(); break;
-			case 2: cosmeticController.registCosmetic(inputCosmetic()); break;
-			case 3: cosmeticController.modifyCosmetic(inputModifyCosmetic()); break;
-			case 4: cosmeticController.deleteCosmetic(inputCosmeticCode()); break;
+//			case 2: cosmeticController.registCosmetic(inputCosmetic()); break;
+//			case 3: cosmeticController.modifyCosmetic(inputModifyCosmetic()); break;
+//			case 4: cosmeticController.deleteCosmetic(inputCosmeticCode()); break;
 			default: System.out.println("잘못 된 관리번호를 선택하셨습니다.");
 			}
 			

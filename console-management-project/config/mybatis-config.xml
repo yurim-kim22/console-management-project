@@ -23,7 +23,7 @@
   </environments>
   
   <mappers>
-  	<mapper resource="com/greedy/cosmetic/model/dao/CosmeticMapper.xml"/>
+  	<package name="com.greedy.mappers"/>
   </mappers>
     
 </configuration>
