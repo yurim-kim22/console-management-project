@@ -25,7 +25,7 @@
      ORDER BY COSMETIC_CODE
   </select>
   
-    <insert id="registCosmetic" parameterType="com.greedy.section03.remix.MenuDTO">
+    <insert id="registCosmetic" parameterType="com.greedy.cosmetic.model.dto.CosmeticDTO">
   	INSERT
   	  INTO TBL_COSMETIC
   	(
@@ -37,12 +37,46 @@
   	)
   	VALUES
   	(
-  	  SEQ_MENU_CODE.NEXTVAL
+  	  SEQ_COSMETIC_CODE.NEXTVAL
   	, #{ cosmeticName }
   	, #{ cosmeticPrice}
   	, #{ categoryCode }
-  	, 'Y'
+  	, #{ stockStatus }
   	)
   </insert>
+  
+    <select id="searchMenuByNameOrCategory" parameterType="hashmap" resultMap="CosmeticResultMap">
+    SELECT
+           COSMETIC_CODE
+         , COSMETIC_NAME
+         , COSMETIC_PRICE
+         , CATEGORY_CODE
+         , STOCK_STATUS
+      FROM TBL_COSMETIC
+     <trim prefix="WHERE" prefixOverrides="AND | OR">
+     	<if test="nameValue != null">
+	        COSMETIC_NAME LIKE '%' || #{ nameValue } || '%'
+	      </if>
+	      <if test="categoryValue != null">
+	        AND CATEGORY_CODE = #{ categoryValue }
+	      </if>
+     </trim>
+     ORDER BY COSMETIC_CODE
+  </select>
+  
+    <update id="updateCosmetic" parameterType="hashmap">
+  	UPDATE
+  	       TBL_COSMETIC
+  	   SET COSMETIC_NAME = #{ cosmeticName }
+  	     , COSMETIC_PRICE = #{ cosmeticPrice }
+  	     , CATEGORY_CODE = #{ categoryCode }
+  	 WHERE COSMETIC_CODE = #{ cosmeticCode }
+  </update>
+  
+    <delete id="deleteCosmetic" parameterType="_int">
+  	DELETE
+  	  FROM TBL_COSMETIC
+  	 WHERE COSMETIC_CODE = #{ cosmeticCode }
+  </delete>
 
 </mapper>
