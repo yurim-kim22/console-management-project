@@ -1,6 +1,7 @@
 package com.greedy.cosmetic.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import com.greedy.cosmetic.model.dto.CosmeticDTO;
 import com.greedy.cosmetic.model.service.CosmeticService;
@@ -19,10 +20,10 @@ public class CosmeticController {
 
 	}
 	
-
-	public void selectAllCosmetic() {//전체 조회
+	//전체 조회
+	public void selectAllCosmetic() {
 		
-		List<CosmeticDTO> cosmeticList = cosmeticService.selectAllCosmetic();//셀렉트한 결과물이 리스트로 들어감
+		List<CosmeticDTO> cosmeticList = cosmeticService.selectAllCosmetic();
 		
 		if(cosmeticList != null) {
 			printResult.printCosmeticList(cosmeticList);
@@ -30,5 +31,25 @@ public class CosmeticController {
 			printResult.printErrorMessage("selectList");
 		}
 	}
+
+	//추가
+	public void registCosmetic(Map<String, String> inputCosmetic) {
+		//Map으로 전달된 데이터 꺼내서 DTO에 담아서 Service로 전달
+		CosmeticDTO cosmeticDTO = new CosmeticDTO();
+		cosmeticDTO.setCategoryCode(Integer.valueOf(inputCosmetic.get("cosmeticCode")));
+		cosmeticDTO.setCosmeticName(inputCosmetic.get("name"));
+		cosmeticDTO.setCosmeticPrice(Integer.valueOf(inputCosmetic.get("price")));
+		cosmeticDTO.setCategoryCode(Integer.valueOf(inputCosmetic.get("categoryCode")));
+		cosmeticDTO.setStockStatus(inputCosmetic.get("stock"));
+		
+//		int registResult = cosmeticService.registCosmetic(cosmeticDTO);
+		
+		if(cosmeticService.registCosmetic(cosmeticDTO) > 0) {
+			printResult.printSuccessMessage("insert");
+		}else {
+			printResult.printErrorMessage("insert");
+		}
+	}
+
 
 }

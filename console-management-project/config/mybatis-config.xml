@@ -6,9 +6,12 @@
 
   <properties resource="connection-info.properties"/>
   
-  <typeAliases>
-  	<typeAlias type="" alias=""/>
+  <!-- 
+  	<typeAliases>
+  	<typeAlias type="com.greedy" alias=""/>
   </typeAliases>
+   -->
+  
 
   <environments default="dev">
     <environment id="dev">
@@ -25,7 +28,7 @@
   <mappers>
   	<package name="com.greedy.mappers"/>
   </mappers>
-    
+
 </configuration>
 
 

@@ -6,7 +6,9 @@ import com.greedy.cosmetic.model.dto.CosmeticDTO;
 
 public interface CosmeticMapper {
 
-	List<CosmeticDTO> selectAllMenu();
+	List<CosmeticDTO> selectAllCosmetic();
+
+	List<CosmeticDTO> registCosmetic(CosmeticDTO cosmeticDTO);
 
 
 }

@@ -1,6 +1,6 @@
 package com.greedy.cosmetic.model.service;
 
-import java.util.HashMap;
+
 import java.util.List;
 import java.util.Map;
 
@@ -19,9 +19,21 @@ public class CosmeticService {
 	public List<CosmeticDTO> selectAllCosmetic() {
 
 		SqlSession sqlSession = getSqlSession();
-		mapper = sqlSession.getMapper(CosmeticMapper.class);
 		
-		List<CosmeticDTO> cosmeticList = mapper.selectAllMenu();
+		mapper = sqlSession.getMapper(CosmeticMapper.class);
+		List<CosmeticDTO> cosmeticList = mapper.selectAllCosmetic();
+		
+		sqlSession.close();
+		
+		return cosmeticList;
+	}
+
+	public int registCosmetic(CosmeticDTO cosmeticDTO) {
+		
+		SqlSession sqlSession = getSqlSession();
+		
+		mapper = sqlSession.getMapper(CosmeticMapper.class);
+		List<CosmeticDTO> cosmeticList = mapper.registCosmetic(cosmeticDTO);
 		
 		sqlSession.close();
 		
