@@ -66,7 +66,7 @@ public class CosmeticController {
 	//수정하기
 	public void updateCosmetic(Map<String, String> inputUpdate) {
 		CosmeticDTO cosmetic = new CosmeticDTO();
-		cosmetic.setCategoryCode(Integer.valueOf(inputUpdate.get("cosmeticCode")));
+		cosmetic.setCosmeticCode(Integer.valueOf(inputUpdate.get("cosmeticCode")));
 		cosmetic.setCosmeticName(inputUpdate.get("name"));
 		cosmetic.setCosmeticPrice(Integer.valueOf(inputUpdate.get("price")));
 		cosmetic.setCategoryCode(Integer.valueOf(inputUpdate.get("categoryCode")));
